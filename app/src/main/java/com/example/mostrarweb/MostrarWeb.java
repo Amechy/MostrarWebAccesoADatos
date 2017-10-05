@@ -7,9 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class MostrarWeb extends AppCompatActivity implements View.OnClickListener {
     Button btnIr;
     EditText etxNavegar;
+    URL url;
 
 
     @Override
@@ -24,9 +28,28 @@ public class MostrarWeb extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        if (etxNavegar.getText().toString().substring(0,7) != "http://" || etxNavegar.getText().toString().substring(0,8) != "https://") {
-            etxNavegar.setText("http://" + etxNavegar.getText().toString());
+        try {
+            url = new URL(etxNavegar.getText().toString());
+        } catch (MalformedURLException e) {
+
+            e.printStackTrace();
         }
+
+        if (!url.getProtocol().equals("http")){
+            if (!url.getProtocol().equals("https")) {
+                etxNavegar.setText("http://" + etxNavegar.getText().toString());
+
+            }
+
+        }
+        if (url.getProtocol().equals("https"))
+        {
+
+        }
+
+        /*if (etxNavegar.getText().toString().substring(0,7) != "http://" && etxNavegar.getText().toString().substring(0,8) != "https://") {
+            etxNavegar.setText("http://" + etxNavegar.getText().toString());
+        }*/
         Bundle bundle = new Bundle();
         bundle.putString("webMostrada", etxNavegar.getText().toString());
         Intent intent = new Intent(this, WebMostrada.class);
