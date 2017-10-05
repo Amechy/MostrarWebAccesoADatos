@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.mostrarweb.MostrarWeb">
+    tools:context="com.example.mostrarweb.MostrarWeb"
+    android:padding="8dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="https://portadaalta.mobi"/>
     <Button
-        android:id="@+id/btnNavegar"
+        android:id="@+id/btnIr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
